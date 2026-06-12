@@ -29,6 +29,8 @@ public class SinglePageView extends AbstractSinglePageView implements Renderable
                 .meta(name("viewport").content("width=device-width, initial-scale=1.0"))
                 .macros().stylesheet("/dist/single.css")
                 .macros().stylesheet("/dist/monaco.css")
+                .macros().stylesheet("/dist/darkmode.css")
+                .macros().javascript("/dist/darkmode.js")
                 .macros().javascript("/dist/marked.min.js")
                 .macros().javascript("/dist/utils.js")
                 .macros().javascript("/dist/folding.js")

@@ -122,6 +122,8 @@ public class MonacoView extends AbstractDiffView implements Renderable {
                     .title().content("RefactoringMiner")
                     .macros().stylesheet(WebDiff.BOOTSTRAP_CSS_URL)
                     .macros().stylesheet("/dist/monaco.css")
+                    .macros().stylesheet("/dist/darkmode.css")
+                    .macros().javascript("/dist/darkmode.js")
                     .macros().javascript(WebDiff.JQUERY_JS_URL)
                     .macros().javascript("https://code.jquery.com/ui/1.12.1/jquery-ui.min.js")
 //                    .macros().stylesheet(JQ_UI_CSS)

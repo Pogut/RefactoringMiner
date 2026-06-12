@@ -1,0 +1,200 @@
+/*
+ * Dark mode for RefactoringMiner web diff.
+ *
+ * Every theming rule below is scoped under `html.rm-dark`, which is added to
+ * <html> by darkmode.js only when the user has enabled dark mode. When the
+ * class is absent the page is styled exactly as before, so light mode is
+ * unchanged. The only unscoped rules are the `.theme-toggle` layout rules,
+ * and they only match the new toggle button (which did not exist before).
+ */
+
+/* ---- Toggle button (new element only, harmless in both themes) ---- */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.theme-toggle svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* ---- Base surfaces & text ---- */
+html.rm-dark {
+    --bs-body-bg: #1e1e1e;
+    --bs-body-color: #d4d4d4;
+    color-scheme: dark;
+}
+html.rm-dark body {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+}
+html.rm-dark a:not(.btn) {
+    color: #4ea1f3;
+}
+html.rm-dark a:not(.btn):hover {
+    color: #6cb6ff;
+}
+
+/* Bootstrap light surfaces -> dark */
+html.rm-dark .bg-light {
+    background-color: #252526 !important;
+    color: #d4d4d4 !important;
+}
+html.rm-dark .card {
+    background-color: #252526;
+    border-color: #3a3a3a;
+    color: #d4d4d4;
+}
+html.rm-dark .card-header {
+    background-color: #2d2d30;
+    border-bottom-color: #3a3a3a;
+    color: #e8e8e8;
+}
+html.rm-dark .card-body {
+    background-color: #252526;
+    color: #d4d4d4;
+}
+
+/* Tables (Bootstrap 5 uses CSS vars for striping/borders) */
+html.rm-dark .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: #d4d4d4;
+    --bs-table-striped-bg: #2a2a2b;
+    --bs-table-striped-color: #d4d4d4;
+    --bs-table-hover-bg: #313133;
+    --bs-table-hover-color: #ffffff;
+    --bs-table-border-color: #3a3a3a;
+    color: #d4d4d4;
+    border-color: #3a3a3a;
+}
+
+/* Alerts (merge-parent bar) */
+html.rm-dark .alert-secondary {
+    background-color: #2d2d30;
+    border-color: #3a3a3a;
+    color: #d4d4d4;
+}
+
+/* List groups (refactorings list) */
+html.rm-dark .list-group-item {
+    background-color: #252526;
+    border-color: #3a3a3a;
+    color: #d4d4d4;
+}
+
+/* Badges / forced-dark text counters */
+html.rm-dark .text-dark {
+    color: #e8e8e8 !important;
+}
+html.rm-dark .badge.badge-secondary,
+html.rm-dark .badge.bg-secondary {
+    background-color: #3a3a3a;
+    color: #e8e8e8;
+}
+
+/* Tree connector lines from style.css (ul li border-left: #ddd) */
+html.rm-dark .tree-root ul li {
+    border-left-color: #3a3a3a;
+}
+
+/* Disabled nav buttons (Prev/Next) */
+html.rm-dark .disabled {
+    background-color: #3a3a3a !important;
+    color: #7a7a7a !important;
+    border-color: #3a3a3a !important;
+}
+
+/* highlight.js code spans inside refactoring descriptions */
+html.rm-dark .hljs {
+    background: transparent;
+    color: #d4d4d4;
+}
+
+/* Popovers (Legend / Shortcuts) */
+html.rm-dark .popover {
+    background-color: #2d2d30;
+    border-color: #3a3a3a;
+}
+html.rm-dark .popover-body {
+    color: #d4d4d4;
+}
+html.rm-dark .popover-header {
+    background-color: #252526;
+    border-bottom-color: #3a3a3a;
+    color: #e8e8e8;
+}
+html.rm-dark .bs-popover-bottom > .popover-arrow::after,
+html.rm-dark .bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::after {
+    border-bottom-color: #2d2d30;
+}
+html.rm-dark .bs-popover-top > .popover-arrow::after,
+html.rm-dark .bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::after {
+    border-top-color: #2d2d30;
+}
+
+/* ---- Monaco editor chrome ---- */
+html.rm-dark .monaco-editor,
+html.rm-dark .monaco-diff-editor,
+html.rm-dark .monaco-component {
+    --vscode-editor-foldBackground: #264f78 !important;
+}
+
+/*
+ * ---- Diff highlight colors (dark variants) ----
+ * The light pastel backgrounds from monaco.css / vanilla.css are unreadable
+ * behind the light text of a dark editor, so we replace them with translucent
+ * tints that keep the same semantic hue while letting the code stay legible.
+ * These selectors are more specific than the originals, so no !important needed.
+ */
+html.rm-dark .inserted,
+html.rm-dark .add {
+    background-color: rgba(63, 185, 80, 0.28);
+}
+html.rm-dark .deleted,
+html.rm-dark .del {
+    background-color: rgba(248, 81, 73, 0.28);
+}
+html.rm-dark .moved,
+html.rm-dark .mv,
+html.rm-dark .mm {
+    background-color: rgba(120, 128, 140, 0.32);
+}
+html.rm-dark .updated,
+html.rm-dark .upd,
+html.rm-dark .mm.updOnTop {
+    background-color: rgba(56, 139, 253, 0.32);
+}
+html.rm-dark .moveIn {
+    background-color: rgba(46, 160, 67, 0.45);
+}
+html.rm-dark .moveOut {
+    background-color: rgba(219, 109, 40, 0.45);
+}
+html.rm-dark .selected,
+html.rm-dark .mm.updOnTop.selected {
+    background-color: rgba(210, 153, 34, 0.50);
+}
+html.rm-dark .cupd {
+    color: #b8b8b8;
+}
+
+/* Vanilla classic diff <pre> panels */
+html.rm-dark .pre-scrollable {
+    color: #d4d4d4;
+    background-color: #1e1e1e;
+    border-color: #3a3a3a;
+}
+
+/* Inline PR review comments */
+html.rm-dark .inline-comment {
+    background: #25304a;
+    border-left-color: #2188ff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    color: #d4d4d4;
+}
+html.rm-dark .inline-comment strong {
+    color: #f0f0f0;
+}

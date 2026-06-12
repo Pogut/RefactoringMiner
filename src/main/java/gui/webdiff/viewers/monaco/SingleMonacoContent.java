@@ -126,6 +126,8 @@ public class SingleMonacoContent implements Renderable {
                     .macros().stylesheet(WebDiff.BOOTSTRAP_CSS_URL)
                     .macros().stylesheet("/dist/single-monaco.css")
                     .macros().stylesheet("/dist/monaco.css")
+                    .macros().stylesheet("/dist/darkmode.css")
+                    .macros().javascript("/dist/darkmode.js")
                     .macros().javascript("/dist/marked.min.js")
                     .macros().javascript("/dist/pr-utils.js")
                     .macros().javascript("/dist/single-monaco.js")

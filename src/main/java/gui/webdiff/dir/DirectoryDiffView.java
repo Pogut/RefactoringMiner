@@ -445,6 +445,8 @@ public class DirectoryDiffView implements Renderable {
                         .macros().javascript("/dist/shortcuts.js")
                         .macros().javascript("/dist/dircompare.js")
                         .macros().stylesheet("/dist/style.css")
+                        .macros().stylesheet("/dist/darkmode.css")
+                        .macros().javascript("/dist/darkmode.js")
                      ._head();
         }
     }
@@ -480,6 +482,13 @@ public class DirectoryDiffView implements Renderable {
                     .write(metaInfo.getInfo())
                     ._div()
                     ._if()
+                    .div(class_("btn-group mr-2"))
+                        .button(class_("btn btn-primary theme-toggle")
+                                .add("type", "button")
+                                .title("Toggle dark mode")
+                                .add("aria-label", "Toggle dark mode"))
+                        ._button()
+                    ._div()
                     .div(class_("btn-group"))
                         .if_(!external)
                         .button(class_("btn btn-primary").onClick("window.location.href='/singleView'"))
