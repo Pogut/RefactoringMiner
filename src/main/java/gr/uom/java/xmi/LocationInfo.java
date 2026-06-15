@@ -42,16 +42,20 @@ public class LocationInfo {
 		this.length = node.getLength();
 		this.endOffset = startOffset + length;
 
+		// Position must come from the node itself, not from cu. LangCompilationUnit
+		// extends LangASTNode, so cu.getStartLine()/getStartColumn() return the
+		// whole-file position, which collapses every element in a file to the same
+		// (wrong) line. The offsets above already use node, so do the same here.
 		//lines are 1-based
-		this.startLine = cu.getStartLine();
-		this.endLine = cu.getEndLine();
+		this.startLine = node.getStartLine();
+		this.endLine = node.getEndLine();
 		//columns are 0-based
-		this.startColumn = cu.getStartColumn();
+		this.startColumn = node.getStartColumn();
 		//convert to 1-based
 		if(this.startColumn > 0) {
 			this.startColumn += 1;
 		}
-		this.endColumn = cu.getEndColumn();
+		this.endColumn = node.getEndColumn();
 		//convert to 1-based
 		if(this.endColumn > 0) {
 			this.endColumn += 1;
